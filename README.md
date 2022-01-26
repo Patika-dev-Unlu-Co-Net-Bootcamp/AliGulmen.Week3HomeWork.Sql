@@ -1,3 +1,4 @@
+- Eğitmen-Eğitim ilişkisi, daha esnek bir yapı oluşturabilmek adına ayrı tabloya taşınacak
 - Ef codefirst model oluşturuldu.
 - Değişkenler ingilizce isimlendirilecek, altta belirtilen değişiklikler yapılacak.
 - yeni tablo yapısı ile herşey yeniden güncellenecek
