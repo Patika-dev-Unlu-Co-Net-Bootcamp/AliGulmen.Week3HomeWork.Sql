@@ -1,3 +1,6 @@
+- Ödev için taslak oluşturulmuştur, ara dersten sonra gerekli araştırmalar tamamlanıp ödev son haline getirilecektir.
+- Çalışan düzeyde en basit yapı oluşturulmaya çalışılmıştır.
+
 ![Schema](schema.png)
 
 # 3. Hafta Ödev
