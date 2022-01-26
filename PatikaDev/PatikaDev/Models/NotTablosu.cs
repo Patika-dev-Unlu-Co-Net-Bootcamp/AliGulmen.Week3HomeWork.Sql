@@ -8,8 +8,7 @@ namespace PatikaDev.Models
     public class NotTablosu
     {
         public int Id { get; set; }
-        public int EgitimId { get; set; }
-        public int OgrenciId { get; set; }
+        public int EgitimOgrencileriId { get; set; }
         public byte OgrenciNotu { get; set; }
     }
 }
