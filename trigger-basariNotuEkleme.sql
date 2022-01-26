@@ -1,5 +1,7 @@
 CREATE TRIGGER basariNotuEkleme ON EgitimYoklamalari
-INSTEAD OF INSERT --insert iþleminin yerine bir iþlem gerçekleþtireceðiz, bunu tercih etme nedenimiz eðer geçerli bir tarih aralýðý girilmediyse hata vererek kayýt iþlemini gerçekleþtirmeyeceðiz
+INSTEAD OF INSERT 
+--insert iþleminin yerine bir iþlem gerçekleþtireceðiz, 
+--bunu tercih etme nedenimiz eðer geçerli bir tarih aralýðý girilmediyse hata vererek kayýt iþlemini gerçekleþtirmeyeceðiz
 AS
 BEGIN
 	
