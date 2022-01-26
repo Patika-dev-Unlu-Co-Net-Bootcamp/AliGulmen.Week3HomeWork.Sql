@@ -1,3 +1,5 @@
+![Schema](schema.png)
+
 # 3. Hafta Ödev
 Veritabanı 
 1. Patikadev yapısını düşünerek bir db oluşturun
