@@ -1,5 +1,6 @@
 - Ödev için taslak oluşturulmuştur, ara dersten sonra gerekli araştırmalar tamamlanıp ödev son haline getirilecektir.
 - Çalışan düzeyde en basit yapı oluşturulmaya çalışılmıştır.
+- Araştırılacak konular : sql naming conventions, using error messages with stored procedures
 
 ![Schema](schema.png)
 
