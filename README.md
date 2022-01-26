@@ -1,3 +1,7 @@
+- Ef CodeFirst için temel düzey modeller oluşturuldu.
+- NotTablosu ve EgitimYoklamalari tablolarında egitimId ve ogrenciId tekrarlamasının önüne geçmek amacıyla ;
+  - Bu iki satır yerine EgitimOgrencileri id satırı kullanılacak. Bu sayede her eğitim-öğrenci ilişkisi için kontroller kolaylaşacak ve veri tekrarının önüne geçilecek
+  - Aynı şekilde stored procedure, view, trigger bölümlerinde gerekli düzenlemeler yapılacaktır
 - Ödev için taslak oluşturulmuştur, ara dersten sonra gerekli araştırmalar tamamlanıp ödev son haline getirilecektir.
 - Çalışan düzeyde en basit yapı oluşturulmaya çalışılmıştır.
 - Araştırılacak konular : sql naming conventions, using error messages with stored procedures, more readable codes on sql
