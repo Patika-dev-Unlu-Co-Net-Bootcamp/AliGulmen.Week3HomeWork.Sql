@@ -1,3 +1,11 @@
+- Ef codefirst model oluşturuldu.
+- Değişkenler ingilizce isimlendirilecek, altta belirtilen değişiklikler yapılacak.
+- yeni tablo yapısı ile herşey yeniden güncellenecek
+
+- Tasarlanan modelde asistanlar; öğrenciler arasından seçilmediği için farklı bir model olarak kabul edilmiş, ileride tanımlanabilecek özel statüler, görevler, bilgiler göz önüne alınarak aynı tablo altında toplanmamıştır.
+- Her derste birden fazla asistan ve birden fazla öğrenci olabileceği için ayrı tablo oluşturulmuş, her derse ait yalnızca bir eğitmen olacağı ve bunun ileride de değişmesinin söz konusu olmayacağı düşünülerek
+öğretmen bilgisi eğitim tablosunun içinde tutulmuştur. İleride birden fazla eğitmenin derse katılabileceği söz konusu olsaydı eğitmen-eğitim ilişkisi için de ayrıca tablo oluşturulacaktı.
+
 - Ef CodeFirst için temel düzey modeller oluşturuldu.
 - NotTablosu ve EgitimYoklamalari tablolarında egitimId ve ogrenciId tekrarlamasının önüne geçmek amacıyla ;
   - Bu iki satır yerine EgitimOgrencileri id satırı kullanılacak. Bu sayede her eğitim-öğrenci ilişkisi için kontroller kolaylaşacak ve veri tekrarının önüne geçilecek

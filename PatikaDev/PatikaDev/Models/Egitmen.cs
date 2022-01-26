@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 
 namespace PatikaDev.Models
 {
-    public class Asistanlar
+    public class Egitmen
     {
         public int Id { get; set; }
         public string Isim { get; set; }
         public string Soyisim { get; set; }
         public string Email { get; set; }
+
+        public Egitim Egitim { get; set; }
     }
 }

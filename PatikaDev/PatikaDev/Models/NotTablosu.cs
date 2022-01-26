@@ -9,6 +9,7 @@ namespace PatikaDev.Models
     {
         public int Id { get; set; }
         public int EgitimOgrencileriId { get; set; }
+        public EgitimOgrencileri EgitimOgrencileri { get; set; }
         public byte OgrenciNotu { get; set; }
     }
 }
