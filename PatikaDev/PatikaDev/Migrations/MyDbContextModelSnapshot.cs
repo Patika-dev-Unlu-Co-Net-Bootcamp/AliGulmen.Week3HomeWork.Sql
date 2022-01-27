@@ -19,37 +19,52 @@ namespace PatikaDev.Migrations
                 .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AsistanEgitim", b =>
+            modelBuilder.Entity("AssistantCourse", b =>
                 {
-                    b.Property<int>("AsistanlarId")
+                    b.Property<int>("AssistantsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EgitimlerId")
+                    b.Property<int>("CoursesId")
                         .HasColumnType("int");
 
-                    b.HasKey("AsistanlarId", "EgitimlerId");
+                    b.HasKey("AssistantsId", "CoursesId");
 
-                    b.HasIndex("EgitimlerId");
+                    b.HasIndex("CoursesId");
 
-                    b.ToTable("AsistanEgitim");
+                    b.ToTable("AssistantCourse");
                 });
 
-            modelBuilder.Entity("EgitimKatilimci", b =>
+            modelBuilder.Entity("CourseParticipant", b =>
                 {
-                    b.Property<int>("EgitimlerId")
+                    b.Property<int>("CoursesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("KatilimcilarId")
+                    b.Property<int>("ParticipantsId")
                         .HasColumnType("int");
 
-                    b.HasKey("EgitimlerId", "KatilimcilarId");
+                    b.HasKey("CoursesId", "ParticipantsId");
 
-                    b.HasIndex("KatilimcilarId");
+                    b.HasIndex("ParticipantsId");
 
-                    b.ToTable("EgitimKatilimci");
+                    b.ToTable("CourseParticipant");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.Asistan", b =>
+            modelBuilder.Entity("CourseTeacher", b =>
+                {
+                    b.Property<int>("CoursesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeachersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CoursesId", "TeachersId");
+
+                    b.HasIndex("TeachersId");
+
+                    b.ToTable("CourseTeacher");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.Assistant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,176 +74,128 @@ namespace PatikaDev.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Isim")
+                    b.Property<string>("Lastname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Soyisim")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Asistanlar");
+                    b.ToTable("Assistants");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.Egitim", b =>
+            modelBuilder.Entity("PatikaDev.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("BasariNotu")
-                        .HasColumnType("tinyint");
-
-                    b.Property<string>("EgitimAdi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EgitmenId")
-                        .HasColumnType("int");
-
-                    b.Property<short>("Kontejan")
+                    b.Property<short>("Capacity")
                         .HasColumnType("smallint");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("EgitmenId")
-                        .IsUnique();
-
-                    b.ToTable("Egitimler");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.EgitimOgrencileri", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EgitimId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OgrenciId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EgitimId");
-
-                    b.HasIndex("OgrenciId");
-
-                    b.ToTable("EgitimOgrencileri");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.EgitimTarihleri", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("BaslangicTarihi")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("BitisTarihi")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EgitimId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EgitimId")
-                        .IsUnique();
-
-                    b.ToTable("EgitimTarihleri");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.EgitimYoklamalari", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EgitimOgrencileriId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Katilim")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("Tarih")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EgitimOgrencileriId");
-
-                    b.ToTable("EgitimYoklamalari");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.Egitmen", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Isim")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Soyisim")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Egitmenler");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.Katilimci", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Isim")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Soyisim")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Katilimcilar");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.NotTablosu", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EgitimOgrencileriId")
-                        .HasColumnType("int");
-
-                    b.Property<byte>("OgrenciNotu")
+                    b.Property<byte>("PassingGrade")
                         .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EgitimOgrencileriId");
-
-                    b.ToTable("NotTablosu");
+                    b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.Ogrenci", b =>
+            modelBuilder.Entity("PatikaDev.Models.CourseAbsence", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseStudentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Present")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseStudentId");
+
+                    b.ToTable("CourseAbsences");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.CourseDate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId")
+                        .IsUnique();
+
+                    b.ToTable("CourseDates");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.CourseStudent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("CourseStudents");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.Grade", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseStudentId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Mark")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseStudentId");
+
+                    b.ToTable("Grades");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.Participant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -238,118 +205,159 @@ namespace PatikaDev.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Isim")
+                    b.Property<string>("Lastname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Soyisim")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ogrenciler");
+                    b.ToTable("Participants");
                 });
 
-            modelBuilder.Entity("AsistanEgitim", b =>
+            modelBuilder.Entity("PatikaDev.Models.Student", b =>
                 {
-                    b.HasOne("PatikaDev.Models.Asistan", null)
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.Teacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teachers");
+                });
+
+            modelBuilder.Entity("AssistantCourse", b =>
+                {
+                    b.HasOne("PatikaDev.Models.Assistant", null)
                         .WithMany()
-                        .HasForeignKey("AsistanlarId")
+                        .HasForeignKey("AssistantsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PatikaDev.Models.Egitim", null)
+                    b.HasOne("PatikaDev.Models.Course", null)
                         .WithMany()
-                        .HasForeignKey("EgitimlerId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EgitimKatilimci", b =>
+            modelBuilder.Entity("CourseParticipant", b =>
                 {
-                    b.HasOne("PatikaDev.Models.Egitim", null)
+                    b.HasOne("PatikaDev.Models.Course", null)
                         .WithMany()
-                        .HasForeignKey("EgitimlerId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PatikaDev.Models.Katilimci", null)
+                    b.HasOne("PatikaDev.Models.Participant", null)
                         .WithMany()
-                        .HasForeignKey("KatilimcilarId")
+                        .HasForeignKey("ParticipantsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.Egitim", b =>
+            modelBuilder.Entity("CourseTeacher", b =>
                 {
-                    b.HasOne("PatikaDev.Models.Egitmen", "Egitmen")
-                        .WithOne("Egitim")
-                        .HasForeignKey("PatikaDev.Models.Egitim", "EgitmenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Egitmen");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.EgitimOgrencileri", b =>
-                {
-                    b.HasOne("PatikaDev.Models.Egitim", "Egitim")
+                    b.HasOne("PatikaDev.Models.Course", null)
                         .WithMany()
-                        .HasForeignKey("EgitimId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PatikaDev.Models.Ogrenci", "Ogrenci")
+                    b.HasOne("PatikaDev.Models.Teacher", null)
                         .WithMany()
-                        .HasForeignKey("OgrenciId")
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Egitim");
-
-                    b.Navigation("Ogrenci");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.EgitimTarihleri", b =>
+            modelBuilder.Entity("PatikaDev.Models.CourseAbsence", b =>
                 {
-                    b.HasOne("PatikaDev.Models.Egitim", "Egitim")
-                        .WithOne("EgitimTarihi")
-                        .HasForeignKey("PatikaDev.Models.EgitimTarihleri", "EgitimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Egitim");
-                });
-
-            modelBuilder.Entity("PatikaDev.Models.EgitimYoklamalari", b =>
-                {
-                    b.HasOne("PatikaDev.Models.EgitimOgrencileri", "EgitimOgrencileri")
+                    b.HasOne("PatikaDev.Models.CourseStudent", "CourseStudent")
                         .WithMany()
-                        .HasForeignKey("EgitimOgrencileriId")
+                        .HasForeignKey("CourseStudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("EgitimOgrencileri");
+                    b.Navigation("CourseStudent");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.NotTablosu", b =>
+            modelBuilder.Entity("PatikaDev.Models.CourseDate", b =>
                 {
-                    b.HasOne("PatikaDev.Models.EgitimOgrencileri", "EgitimOgrencileri")
+                    b.HasOne("PatikaDev.Models.Course", "Course")
+                        .WithOne("CourseDate")
+                        .HasForeignKey("PatikaDev.Models.CourseDate", "CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("PatikaDev.Models.CourseStudent", b =>
+                {
+                    b.HasOne("PatikaDev.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("EgitimOgrencileriId")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("EgitimOgrencileri");
+                    b.HasOne("PatikaDev.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.Egitim", b =>
+            modelBuilder.Entity("PatikaDev.Models.Grade", b =>
                 {
-                    b.Navigation("EgitimTarihi");
+                    b.HasOne("PatikaDev.Models.CourseStudent", "CourseStudent")
+                        .WithMany()
+                        .HasForeignKey("CourseStudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CourseStudent");
                 });
 
-            modelBuilder.Entity("PatikaDev.Models.Egitmen", b =>
+            modelBuilder.Entity("PatikaDev.Models.Course", b =>
                 {
-                    b.Navigation("Egitim");
+                    b.Navigation("CourseDate");
                 });
 #pragma warning restore 612, 618
         }
