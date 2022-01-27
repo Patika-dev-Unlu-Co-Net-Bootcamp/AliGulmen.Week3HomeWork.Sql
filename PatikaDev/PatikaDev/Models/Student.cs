@@ -1,11 +1,7 @@
 ﻿namespace PatikaDev.Models
 {
-    public class Student
+    public class Student : BasePersonEntity
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
 
         //we create manually  public List<Egitim> Egitimler { get; set; }
 
