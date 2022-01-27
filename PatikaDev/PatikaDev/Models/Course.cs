@@ -7,6 +7,7 @@ namespace PatikaDev.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public byte DurationWeek { get; set; }
         public byte PassingGrade { get; set; }
         public Int16 Capacity { get; set; }
 
