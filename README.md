@@ -2,6 +2,8 @@
 
 This homework includes the task of **SQL Database Design** for PatikaDev System. 
 
+![Schema](schema.png)
+
 ## Our Goals
 
 Veritabanı 
@@ -30,8 +32,6 @@ Veritabanı
   - Date properties have been chosen SmallDateTime to not store unnecessary data.
   - The Foreign Key for **Grades** and **CourseAbsences** tables was selected from the **CourseStudents** table. In this way, we can easily prevent inserting record for students without courses.
     
-
-![Schema](schema.png)
 
 - Trigger TR_CourseAbsences_InsteadOfInsert created to increase students' mark when they attend class.
   - In this trigger, We used "instead of" type. If there is an issue with date information, we won't run query and we will throw an error
