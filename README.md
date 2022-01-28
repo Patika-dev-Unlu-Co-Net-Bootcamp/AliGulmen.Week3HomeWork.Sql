@@ -21,10 +21,10 @@ Veritabanı
 
 ## Key Points
 
-- Tables created as shown below
+- Tables created as described below
   - Participants, Assistants, Teachers and Students stored in seperate tables. These objects may have different properties in the future. So, shouldn't be combined in same table
   - There can be more than one assistant, participant and student in each course. So, separate tables has been created for releationship between these entities and Courses.
-  - Each course has only one teacher for now. So, it is possible to put **TeacherId** in **Courses** table BUT because of this design can change in the future, teacher-course releation moved to seperate folder.
+  - Each course has only one teacher for now. So, it is possible to put **TeacherId** in **Courses** table BUT because of this design can change in the future, teacher-course releation moved to seperate table.
   - Name, Lastname properties have been chosen NVarChar(50) due to containing special characters (Turkish),
   - Email property is not able to contain special characters, so it has been chosen VarChar(100),
   - The max value of Mark and PassingGrade are 100, so defined as tinyint
